@@ -1,0 +1,24 @@
+{
+  "name": "mean-ang-blog",
+  "version": "1.0.0",
+  "description": "A blog site using Angular 2 ",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choudharyanurag/mean2blog.git"
+  },
+  "author": "Anurag Choudhary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/choudharyanurag/mean2blog/issues"
+  },
+  "homepage": "https://github.com/choudharyanurag/mean2blog#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.16.2",
+    "mongoose": "^4.4.8"
+  }
+}
