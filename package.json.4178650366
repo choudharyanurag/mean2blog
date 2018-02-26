@@ -17,8 +17,6 @@
   },
   "homepage": "https://github.com/choudharyanurag/mean2blog#readme",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.18.2",
     "crypto": "^1.0.1",
     "express": "^4.16.2",
     "mongoose": "^4.4.8"

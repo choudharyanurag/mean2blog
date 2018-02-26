@@ -1,6 +1,8 @@
 /* Express Setup */
 const  express = require("express");
 const app = express();
+const router = express.Router();
+
 
 /* Path setup */
 const path = require('path');
@@ -15,10 +17,19 @@ const dbConnection = mongoose.connect(dbConfig.uri /*, { useMongoClient: true } 
     , (err)=>helpers.handleDBError(err));
 //console.log(dbConnection);
 
-/* Application start */
+/* Authentication */
 
+const authentication = require('./routes/authentication')(router);
+
+/* body parser */ 
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+/* Application start and Routes */
 app.use(express.static(__dirname+'/blog-ui-client/dist/'));
-
+app.use('/auth',authentication);
 
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname+'/blog-ui-client/dist/index.html'));

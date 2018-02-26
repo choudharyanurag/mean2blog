@@ -5,7 +5,7 @@ console.log(
 const cryptoBuffer = buf.toString('hex');
 
 module.exports = {
-    db:'blog-site-db',
-    uri:'mongodb://localhost:27017/' + this.db,
+    db:'temoli',
+    uri:'mongodb://localhost:27017/temoli',
     secret: cryptoBuffer
 }
