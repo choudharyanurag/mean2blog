@@ -1,9 +1,15 @@
-var Validate = module.exports =function Validate() { 
-
-};
 
 
-Validate.prototype.vallength = function (strvar, minlen, maxlen) {
+var regexp = function (strvar, expression) {
+    let regexer = new RegExp(expression);
+    if (!strvar) {
+        return false;
+    } else {
+        return regexer.test(strvar);
+    }
+}
+
+var vallength = function (strvar, minlen, maxlen) {
     if (!strvar) {
         return false;
     } else {
@@ -13,16 +19,17 @@ Validate.prototype.vallength = function (strvar, minlen, maxlen) {
             return true;
         }
     }
+}
+
+
+module.exports.Validate = {
+    regexp : regexp,
+    vallength : vallength
 };
 
-Validate.prototype.regex = function (strvar, expression) {
-    let regexer = new RegExp(expression);
-    if (!strvar) {
-        return false;
-    } else {
-        return regexer.test(strvar);
-    }
-};
+
+
+
 
 
 

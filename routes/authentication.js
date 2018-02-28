@@ -2,7 +2,6 @@ const User = require('../models/user');
 const helpers = require('../utils/helpermethods');
 
 module.exports = (router) => {
-
     function addStringToErrorMessage(errorMessage, err){
         if(!errorMessage){
             errorMessage = err;
@@ -16,6 +15,7 @@ module.exports = (router) => {
 
     router.post('/register', (req,res)=>{
         let errMessage = null;
+        console.log(req.body);
         if(!req.body.email){
             errMessage = addStringToErrorMessage(errMessage ,'Email is your token of identity, provide a valid one.');
         }
@@ -34,20 +34,38 @@ module.exports = (router) => {
                 username: req.body.username.toLowerCase(),
                 password: req.body.password
             });
+
+            console.log(user);
             
             user.save((err) => {
+                let modelSaveError = null;
                 if(err){
+                    console.log(err);
                     if(err.code===11000 ){
-                        res.json({ success: false, message: 'Be unique, Username is already taken or email already in use' });
+                        modelSaveError = addStringToErrorMessage( modelSaveError, 'Be unique, Username is already taken or email already in use' );
                     }
+                    if (err.errors) {
+                        if (err.errors.email) {
+                            modelSaveError = addStringToErrorMessage( modelSaveError,err.errors.email.message ); 
+                        }
+                        if (err.errors.username) {
+                            modelSaveError = addStringToErrorMessage( modelSaveError,err.errors.username.message ); 
+                        }
+                        if (err.errors.password) {
+                            modelSaveError = addStringToErrorMessage( modelSaveError, err.errors.password.message );
+                        }
+                    }
+                    res.json({success :false , message : modelSaveError});
                 }else{
-                    res.json({success :true, message : 'We are working on it'});
+                    res.json({success :true, message : 'Saved successfully.'});
                 }
             });
         }
 
 
     });
+
+   
 
     return router;
 }

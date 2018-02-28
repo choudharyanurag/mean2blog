@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * The root of the start.
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,9 +10,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  
+  /**
+   * The "constructor"
+   */
   constructor(){
-   this.title = 'application'; 
-   console.log('application constructor called');
+   this.title = 'TeMoLi blog'; 
   }
 
 }
