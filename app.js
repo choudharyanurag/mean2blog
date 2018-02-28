@@ -19,7 +19,7 @@ mongoose.Promise = global.Promise;
 const dbConfig = require('./config/dev-dbconfig');
 const helpers = require('./utils/helpermethods');
 console.log('Will try to connect to database ' + dbConfig.uri);
-const dbConnection = mongoose.connect(dbConfig.uri /*, { useMongoClient: true } */
+const dbConnection = mongoose.connect(dbConfig.uri, { useMongoClient: true } 
     , (err)=>helpers.handleDBError(err));
 //console.log(dbConnection);
 
